@@ -1,1 +1,66 @@
+/* ==========================================================================
+   VARIABLES CSS - THÈME ET DESIGN SYSTEM
+   ========================================================================== */
 
+/* Thème clair par défaut */
+:root {
+  /* Palette de couleurs */
+  --color-bg: #FAF6EF;              /* Fond crème principal */
+  --color-surface: #FFFFFF;         /* Fond des cartes et conteneurs */
+  --color-text: #2B2220;            /* Texte principal sombre */
+  --color-text-muted: #665855;      /* Texte secondaire / atténué */
+  --color-primary: #7A1F2B;         /* Couleur principale bordeaux */
+  --color-primary-hover: #5F1821;   /* Bordeaux foncé pour survol */
+  --color-accent: #B8892D;          /* Accent doré */
+  --color-accent-hover: #9E7422;    /* Doré foncé pour survol */
+  --color-border: #E6DCDE;          /* Bordures légères */
+  --color-shadow: rgba(43, 34, 32, 0.08); /* Ombre douce */
+
+  /* Familles de polices (2 familles max avec solutions de repli) */
+  --font-title: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-body: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Échelle typographique en rem (1rem = 16px par défaut) */
+  --font-size-sm: 0.875rem;    /* 14px */
+  --font-size-base: 1rem;      /* 16px - taille minimale corps de texte */
+  --font-size-md: 1.125rem;    /* 18px */
+  --font-size-lg: 1.25rem;     /* 20px */
+  --font-size-xl: 1.5rem;      /* 24px */
+  --font-size-2xl: 2rem;       /* 32px */
+  --font-size-3xl: 2.5rem;     /* 40px */
+
+  /* Espacements relatifs */
+  --spacing-xs: 0.5rem;        /* 8px */
+  --spacing-sm: 0.75rem;       /* 12px */
+  --spacing-md: 1rem;          /* 16px */
+  --spacing-lg: 1.5rem;        /* 24px */
+  --spacing-xl: 2rem;          /* 32px */
+  --spacing-2xl: 3rem;         /* 48px */
+
+  /* Rayons de bordure */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Largeur maximale du contenu */
+  --container-max-width: 1200px;
+
+  /* Transitions fluides */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* Thème sombre (activé via l'attribut data-theme="dark" sur <html> ou <body>) */
+[data-theme="dark"] {
+  --color-bg: #1A1412;              /* Fond très sombre */
+  --color-surface: #26201E;         /* Fond des cartes plus clair que le fond */
+  --color-text: #F5EFEB;            /* Texte clair (contraste ≥ 4.5:1 garanti) */
+  --color-text-muted: #B8ADA8;      /* Texte secondaire clair */
+  --color-primary: #D45D6B;         /* Bordeaux éclairci pour bonne lisibilité */
+  --color-primary-hover: #E67A87;   /* Bordeaux clair pour survol */
+  --color-accent: #DDB05B;          /* Doré lumineux */
+  --color-accent-hover: #E8BF70;    /* Doré clair pour survol */
+  --color-border: #3D322F;          /* Bordures adaptées au fond sombre */
+  --color-shadow: rgba(0, 0, 0, 0.4); /* Ombre plus marquée */
+}
