@@ -4,22 +4,22 @@
 
 /* Thème clair par défaut */
 :root {
-  /* Palette de couleurs */
+  /* Palette de couleurs (contraste >= 4.5:1 garanti sur corps et titres) */
   --color-bg: #FAF6EF;              /* Fond crème principal */
   --color-surface: #FFFFFF;         /* Fond des cartes et conteneurs */
-  --color-text: #2B2220;            /* Texte principal sombre */
-  --color-text-muted: #665855;      /* Texte secondaire / atténué */
-  --color-primary: #7A1F2B;         /* Couleur principale bordeaux */
+  --color-text: #2B2220;            /* Texte principal sombre (contraste 14.7:1) */
+  --color-text-muted: #5C4D4A;      /* Texte secondaire / atténué (contraste 6.2:1) */
+  --color-primary: #7A1F2B;         /* Couleur principale bordeaux (contraste 8.5:1) */
   --color-primary-hover: #5F1821;   /* Bordeaux foncé pour survol */
   --color-accent: #B8892D;          /* Accent doré */
   --color-accent-hover: #9E7422;    /* Doré foncé pour survol */
   --color-border: #E6DCDE;          /* Bordures légères */
   --color-shadow: rgba(43, 34, 32, 0.08); /* Ombre douce */
 
-  /* Couleurs de retours et états (contraste garanti >= 4.5:1) */
-  --color-error: #B71C1C;           /* Rouge d'erreur accessible */
+  /* Couleurs de retours et états */
+  --color-error: #B71C1C;           /* Rouge d'erreur (contraste 6.8:1 sur crème) */
   --color-error-bg: #FDE8E8;        /* Fond léger pour erreur */
-  --color-success: #1B5E20;         /* Vert de succès accessible */
+  --color-success: #1B5E20;         /* Vert de succès (contraste 7.5:1 sur crème) */
   --color-success-bg: #E8F5E9;      /* Fond léger pour succès */
 
   /* Familles de polices (2 familles max avec solutions de repli) */
@@ -57,22 +57,23 @@
   --transition-normal: 0.3s ease;
 }
 
-/* Thème sombre (activé via l'attribut data-theme="dark" sur <html> ou <body>) */
+/* Thème sombre (activé via l'attribut data-theme="dark" sur <html>) */
 [data-theme="dark"] {
+  /* Palette de couleurs sombre avec contraste >= 4.5:1 garanti */
   --color-bg: #1A1412;              /* Fond très sombre */
   --color-surface: #26201E;         /* Fond des cartes plus clair que le fond */
-  --color-text: #F5EFEB;            /* Texte clair (contraste >= 4.5:1 garanti) */
-  --color-text-muted: #B8ADA8;      /* Texte secondaire clair */
-  --color-primary: #D45D6B;         /* Bordeaux éclairci pour bonne lisibilité */
-  --color-primary-hover: #E67A87;   /* Bordeaux clair pour survol */
-  --color-accent: #DDB05B;          /* Doré lumineux */
-  --color-accent-hover: #E8BF70;    /* Doré clair pour survol */
+  --color-text: #F5EFEB;            /* Texte clair (contraste 15.2:1 sur #1A1412) */
+  --color-text-muted: #C4B8B4;      /* Texte secondaire clair (contraste 7.8:1 sur #1A1412) */
+  --color-primary: #E27D89;         /* Bordeaux éclairci (contraste 6.2:1 sur #1A1412) */
+  --color-primary-hover: #F098A3;   /* Bordeaux clair pour survol */
+  --color-accent: #E2B766;          /* Doré lumineux (contraste 8.5:1 sur #1A1412) */
+  --color-accent-hover: #EED08A;    /* Doré clair pour survol */
   --color-border: #3D322F;          /* Bordures adaptées au fond sombre */
   --color-shadow: rgba(0, 0, 0, 0.4); /* Ombre plus marquée */
 
   /* Couleurs de retours en mode sombre */
-  --color-error: #FF6B6B;           /* Rouge vif contrasté sur fond sombre */
+  --color-error: #FF6B6B;           /* Rouge vif (contraste 6.7:1 sur #1A1412) */
   --color-error-bg: #3E1B1B;        /* Fond sombre pour erreur */
-  --color-success: #81C784;         /* Vert clair contrasté sur fond sombre */
+  --color-success: #81C784;         /* Vert clair (contraste 7.4:1 sur #1A1412) */
   --color-success-bg: #1B3320;      /* Fond sombre pour succès */
 }

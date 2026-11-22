@@ -347,7 +347,7 @@
   background-color: var(--color-error-bg);
 }
 
-/* Message d'erreur accessible sous le champ (contraste >= 4.5:1 et non basé uniquement sur la couleur) */
+/* Message d'erreur accessible sous le champ */
 .erreur {
   margin-top: 0.35rem;
   margin-bottom: 0;
@@ -358,7 +358,6 @@
   min-height: 1.2rem;
 }
 
-/* Préfixe textuel « ⚠️ Erreur : » lorsqu'un message est présent */
 .erreur:not(:empty)::before {
   content: "⚠️ Erreur : ";
 }
@@ -416,6 +415,139 @@
   line-height: 1.5;
 }
 
+/* 10. Composants de la page Contact & Tableau des horaires */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+}
+
+.contact-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: 0 4px 12px var(--color-shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+.coordonnees-liste {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.coordonnee-item p {
+  margin-bottom: 0.25rem;
+}
+
+.coordonnee-label {
+  font-weight: 700;
+  color: var(--color-text);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.lien-contact {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.btn-maps {
+  margin-top: var(--spacing-xs);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.contact-media {
+  margin-top: var(--spacing-md);
+}
+
+.contact-img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+
+/* Enveloppe responsive pour le tableau évitant tout défilement global */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.horaires-table {
+  width: 100%;
+  min-width: 320px;
+  border-collapse: collapse;
+  text-align: left;
+  background-color: var(--color-surface);
+}
+
+.horaires-table caption {
+  caption-side: top;
+  font-weight: 700;
+  color: var(--color-text);
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+  background-color: rgba(184, 137, 45, 0.06);
+}
+
+.horaires-table th,
+.horaires-table td {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+}
+
+.horaires-table thead th {
+  background-color: rgba(122, 31, 43, 0.08);
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.horaires-table tbody th {
+  font-weight: 600;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.horaires-table tbody tr:last-child th,
+.horaires-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.horaires-table tr.jour-ferme td {
+  color: var(--color-error);
+  font-weight: 600;
+  font-style: italic;
+}
+
+.reservation-rappel {
+  background-color: var(--color-bg);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  margin-top: auto;
+  text-align: center;
+}
+
+.reservation-rappel p {
+  margin-bottom: var(--spacing-xs);
+}
+
+.reservation-rappel .btn {
+  margin-top: var(--spacing-xs);
+}
+
 /* ==========================================================================
    MEDIA QUERIES DES COMPOSANTS (360px, 768px, 1200px)
    ========================================================================== */
@@ -471,7 +603,7 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Formulaire en 2 colonnes sur tablette et desktop */
+  /* Formulaire en 2 colonnes sur tablette */
   .form-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -479,6 +611,11 @@
   .btn-submit {
     width: auto;
     min-width: 280px;
+  }
+
+  /* Contact en 2 colonnes sur tablette */
+  .contact-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

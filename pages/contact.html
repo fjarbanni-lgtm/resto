@@ -44,10 +44,115 @@
 
   <!-- Contenu principal -->
   <main id="contenu">
-    <div class="container section">
-      <h1>Contactez-nous</h1>
-      <p>Retrouvez nos coordonnées, nos horaires et notre localisation.</p>
-    </div>
+    <section class="section contact-section" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-header">
+          <h1 id="contact-title">Contact &amp; Accès</h1>
+          <p class="section-desc">Retrouvez toutes nos coordonnées, nos horaires détaillés et venez nous rendre visite.</p>
+        </div>
+
+        <div class="contact-grid">
+
+          <!-- Colonne 1 : Coordonnées et accès -->
+          <div class="contact-card">
+            <h2>Nos Coordonnées</h2>
+            <div class="coordonnees-liste">
+              <div class="coordonnee-item">
+                <span class="coordonnee-label">Adresse postale :</span>
+                <p>12 Rue des Saveurs, 75001 Paris</p>
+                <!-- Lien externe vers Google Maps sans iframe pour préserver les performances -->
+                <a href="https://maps.google.com/?q=12+Rue+des+Saveurs+75001+Paris" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-maps">
+                  Voir sur Google Maps <span class="icone-externe" aria-hidden="true">↗</span>
+                </a>
+              </div>
+
+              <div class="coordonnee-item">
+                <span class="coordonnee-label">Téléphone :</span>
+                <p><a href="tel:+33123456789" class="lien-contact">01 23 45 67 89</a></p>
+              </div>
+
+              <div class="coordonnee-item">
+                <span class="coordonnee-label">Adresse e-mail :</span>
+                <p><a href="mailto:contact@lebistrogourmand.fr" class="lien-contact">contact@lebistrogourmand.fr</a></p>
+              </div>
+
+              <div class="coordonnee-item">
+                <span class="coordonnee-label">Accès transports :</span>
+                <p>Métro Ligne 1 &amp; 4 (Station Châtelet) &bull; Parking public sécurisé à 150 mètres.</p>
+              </div>
+            </div>
+
+            <!-- Image de l'intérieur du restaurant avec chargement différé -->
+            <div class="contact-media">
+              <img src="../images/interieur.webp" alt="Atmosphère chaleureuse de la salle principale du Bistro Gourmand" loading="lazy" width="1000" height="667" class="contact-img">
+            </div>
+          </div>
+
+          <!-- Colonne 2 : Tableau des horaires d'ouverture -->
+          <div class="contact-card">
+            <h2>Horaires d'Ouverture</h2>
+            <p>Notre équipe vous accueille pour le service du midi et du soir aux horaires suivants :</p>
+
+            <!-- Conteneur défilant pour éviter tout défilement horizontal de la page entière -->
+            <div class="table-wrapper">
+              <table class="horaires-table">
+                <caption>Horaires des services du restaurant</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Jour</th>
+                    <th scope="col">Service Déjeuner</th>
+                    <th scope="col">Service Dîner</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="jour-ferme">
+                    <th scope="row">Lundi</th>
+                    <td colspan="2">Fermé (Jour de repos)</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Mardi</th>
+                    <td>12h00 - 14h30</td>
+                    <td>19h00 - 22h30</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Mercredi</th>
+                    <td>12h00 - 14h30</td>
+                    <td>19h00 - 22h30</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Jeudi</th>
+                    <td>12h00 - 14h30</td>
+                    <td>19h00 - 22h30</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Vendredi</th>
+                    <td>12h00 - 14h30</td>
+                    <td>19h00 - 23h00</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Samedi</th>
+                    <td>12h00 - 15h00</td>
+                    <td>19h00 - 23h30</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Dimanche</th>
+                    <td>12h00 - 15h00</td>
+                    <td>19h00 - 22h30</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="reservation-rappel">
+              <p><strong>Vous prévoyez une visite ?</strong></p>
+              <p>Nous vous conseillons de réserver votre table à l'avance pour vous garantir la meilleure place.</p>
+              <a href="reservation.html" class="btn btn-primary">Faire une réservation</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Pied de page -->
