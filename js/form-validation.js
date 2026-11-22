@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const champDate = document.getElementById("date");
   const champHeure = document.getElementById("heure");
   const champPersonnes = document.getElementById("personnes");
+  const champMessage = document.getElementById("message");
+  const messageErreurReseau = document.getElementById("message-erreur-reseau");
 
   /**
    * Retourne la date du jour au format YYYY-MM-DD
@@ -217,8 +219,8 @@ document.addEventListener("DOMContentLoaded", () => {
   /**
    * Gestion de la soumission du formulaire
    */
-  formulaire.addEventListener("submit", (event) => {
-    // Empêche le rechargement de la page et l'envoi vers un serveur
+  formulaire.addEventListener("submit", async (event) => {
+    // Empêche le rechargement de la page et l'envoi vers un serveur classique
     event.preventDefault();
 
     const estNomValide = validerNom();
@@ -245,21 +247,97 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Si tout est valide : préparer les informations de confirmation
+    // Récupération des données saisies
     const nomClient = champNom.value.trim();
     const dateChoisie = champDate.value;
     const heureChoisie = champHeure.value;
-    const nbPersonnes = champPersonnes.value;
+    const nbPersonnes = parseInt(champPersonnes.value, 10);
+    const messageClient = champMessage ? champMessage.value.trim() : "";
 
-    // Afficher le message de succès personnalisé
-    if (succesDetails && messageSucces) {
-      succesDetails.textContent = `Merci ${nomClient} ! Votre table pour ${nbPersonnes} personne(s) le ${dateChoisie} à ${heureChoisie} a bien été enregistrée. Un courriel récapitulatif vous a été envoyé.`;
-      messageSucces.hidden = false;
-      messageSucces.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Bouton de soumission pour gérer l'état de chargement
+    const boutonSubmit = formulaire.querySelector(".btn-submit");
+
+    // Initialisation du client Supabase si configuré avec des identifiants réels
+    const estSupabaseConfigure =
+      typeof SUPABASE_CONFIG !== "undefined" &&
+      SUPABASE_CONFIG.url &&
+      SUPABASE_CONFIG.anonKey &&
+      !SUPABASE_CONFIG.url.includes("votre-projet") &&
+      !SUPABASE_CONFIG.anonKey.includes("votre-cle");
+
+    let clientSupabase = null;
+    if (window.supabase && typeof window.supabase.createClient === "function" && estSupabaseConfigure) {
+      const urlPropre = SUPABASE_CONFIG.url.replace(/\/rest\/v1\/?$/, "").replace(/\/+$/, "");
+      clientSupabase = window.supabase.createClient(urlPropre, SUPABASE_CONFIG.anonKey);
     }
 
-    // Réinitialiser le formulaire
-    formulaire.reset();
-    champsObligatoires.forEach(effacerErreur);
+    if (clientSupabase) {
+      // Désactiver le bouton pendant la requête réseau
+      if (boutonSubmit) {
+        boutonSubmit.disabled = true;
+        boutonSubmit.textContent = "Enregistrement en cours...";
+      }
+
+      try {
+        // Insertion asynchrone dans la table 'reservations'
+        const { error } = await clientSupabase
+          .from("reservations")
+          .insert([
+            {
+              nom: nomClient,
+              email: champEmail.value.trim(),
+              telephone: champTelephone.value.trim(),
+              date_reservation: dateChoisie,
+              heure: heureChoisie,
+              personnes: nbPersonnes,
+              message: messageClient
+            }
+          ]);
+
+        if (error) {
+          throw error;
+        }
+
+        // Succès : masquer l'erreur réseau et afficher la confirmation
+        if (messageErreurReseau) {
+          messageErreurReseau.hidden = true;
+        }
+        if (succesDetails && messageSucces) {
+          succesDetails.textContent = `Merci ${nomClient} ! Votre table pour ${nbPersonnes} personne(s) le ${dateChoisie} à ${heureChoisie} a bien été enregistrée.`;
+          messageSucces.hidden = false;
+          messageSucces.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        // Réinitialiser le formulaire
+        formulaire.reset();
+        champsObligatoires.forEach(effacerErreur);
+
+      } catch (erreurReseau) {
+        // En cas d'échec réseau : message d'erreur clair en français
+        if (messageSucces) {
+          messageSucces.hidden = true;
+        }
+        if (messageErreurReseau) {
+          messageErreurReseau.textContent = "⚠️ Une erreur réseau est survenue lors de l'enregistrement de votre réservation. Veuillez vérifier votre connexion ou réessayer ultérieurement.";
+          messageErreurReseau.hidden = false;
+          messageErreurReseau.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      } finally {
+        // Réactiver le bouton
+        if (boutonSubmit) {
+          boutonSubmit.disabled = false;
+          boutonSubmit.textContent = "Confirmer la réservation";
+        }
+      }
+    } else {
+      // Repli si Supabase n'est pas initialisé
+      if (succesDetails && messageSucces) {
+        succesDetails.textContent = `Merci ${nomClient} ! Votre table pour ${nbPersonnes} personne(s) le ${dateChoisie} à ${heureChoisie} a bien été enregistrée.`;
+        messageSucces.hidden = false;
+        messageSucces.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      formulaire.reset();
+      champsObligatoires.forEach(effacerErreur);
+    }
   });
 });

@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Réservez facilement une table en ligne au restaurant Le Bistro Gourmand pour vos déjeuners et dîners gourmands.">
   <title>Réserver une Table | Le Bistro Gourmand</title>
   <!-- Feuilles de style externes dans l'ordre imposé -->
   <link rel="stylesheet" href="../css/variables.css">
@@ -21,7 +22,7 @@
 
       <div class="header-actions">
         <!-- Bouton de bascule du mode sombre -->
-        <button id="theme-toggle" class="btn-icon" aria-label="Activer le mode sombre" type="button">🌙</button>
+        <button id="theme-toggle" class="btn-icon" aria-label="Activer le mode sombre" aria-pressed="false" type="button">🌙</button>
         <!-- Bouton du menu burger mobile -->
         <button class="nav-toggle" aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu" type="button">
           <span class="burger-bar" aria-hidden="true"></span>
@@ -60,49 +61,53 @@
           </div>
         </div>
 
+        <!-- Zone d'erreur réseau Supabase (masquée par défaut) -->
+        <div id="message-erreur-reseau" class="message-erreur-reseau" role="alert" hidden></div>
+
         <!-- Formulaire de réservation avec désactivation de la validation native du navigateur -->
         <form id="form-reservation" class="form-reservation" novalidate>
+          <h2 class="form-titre">Détails de votre réservation</h2>
           <div class="form-grid">
 
             <!-- 1. Champ Nom complet -->
             <div class="form-group">
               <label for="nom">Nom complet <span class="obligatoire" aria-hidden="true">*</span></label>
-              <input type="text" id="nom" name="nom" required aria-required="true" aria-describedby="erreur-nom" placeholder="Ex. Yassine Ben Salem" autocomplete="name">
+              <input type="text" id="nom" name="nom" required aria-describedby="erreur-nom" placeholder="Ex. Yassine Ben Salem" autocomplete="name">
               <p class="erreur" id="erreur-nom" aria-live="polite"></p>
             </div>
 
             <!-- 2. Champ E-mail -->
             <div class="form-group">
               <label for="email">Adresse e-mail <span class="obligatoire" aria-hidden="true">*</span></label>
-              <input type="email" id="email" name="email" required aria-required="true" aria-describedby="erreur-email" placeholder="nom@exemple.com" autocomplete="email">
+              <input type="email" id="email" name="email" required aria-describedby="erreur-email" placeholder="nom@exemple.com" autocomplete="email">
               <p class="erreur" id="erreur-email" aria-live="polite"></p>
             </div>
 
             <!-- 3. Champ Téléphone (8 chiffres) -->
             <div class="form-group">
               <label for="telephone">Numéro de téléphone (8 chiffres) <span class="obligatoire" aria-hidden="true">*</span></label>
-              <input type="tel" id="telephone" name="telephone" required aria-required="true" aria-describedby="erreur-telephone" placeholder="Ex. 98123456" autocomplete="tel">
+              <input type="tel" id="telephone" name="telephone" required aria-describedby="erreur-telephone" placeholder="Ex. 98123456" autocomplete="tel">
               <p class="erreur" id="erreur-telephone" aria-live="polite"></p>
             </div>
 
             <!-- 4. Champ Nombre de personnes (1 à 12) -->
             <div class="form-group">
               <label for="personnes">Nombre de personnes (1 à 12) <span class="obligatoire" aria-hidden="true">*</span></label>
-              <input type="number" id="personnes" name="personnes" min="1" max="12" value="2" required aria-required="true" aria-describedby="erreur-personnes">
+              <input type="number" id="personnes" name="personnes" min="1" max="12" value="2" required aria-describedby="erreur-personnes">
               <p class="erreur" id="erreur-personnes" aria-live="polite"></p>
             </div>
 
             <!-- 5. Champ Date -->
             <div class="form-group">
               <label for="date">Date de réservation <span class="obligatoire" aria-hidden="true">*</span></label>
-              <input type="date" id="date" name="date" required aria-required="true" aria-describedby="erreur-date">
+              <input type="date" id="date" name="date" required aria-describedby="erreur-date">
               <p class="erreur" id="erreur-date" aria-live="polite"></p>
             </div>
 
             <!-- 6. Champ Heure (créneaux 12h-15h et 19h-23h) -->
             <div class="form-group">
               <label for="heure">Créneau horaire <span class="obligatoire" aria-hidden="true">*</span></label>
-              <select id="heure" name="heure" required aria-required="true" aria-describedby="erreur-heure">
+              <select id="heure" name="heure" required aria-describedby="erreur-heure">
                 <option value="">-- Choisissez une heure --</option>
                 <optgroup label="Déjeuner (12h - 15h)">
                   <option value="12:00">12h00</option>
@@ -153,6 +158,11 @@
   </footer>
 
   <!-- Scripts JavaScript différés -->
+  <!-- Bibliothèque client Supabase officielle (version exacte épinglée sans @latest) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.48.1/dist/umd/supabase.min.js" defer></script>
+  <!-- Configuration des identifiants Supabase -->
+  <script src="../js/config.js" defer></script>
+  <!-- Scripts de navigation, thème et validation -->
   <script src="../js/nav.js" defer></script>
   <script src="../js/theme.js" defer></script>
   <script src="../js/form-validation.js" defer></script>
