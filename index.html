@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Bistro Gourmand | Accueil - Restaurant Bistronomique</title>
+  <!-- Feuilles de style externes dans l'ordre imposé -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <!-- Lien d'évitement accessible pour les utilisateurs au clavier -->
+  <a href="#contenu" class="skip-link">Aller au contenu</a>
 
+  <!-- En-tête du site -->
+  <header>
+    <a href="index.html" class="logo">Le Bistro Gourmand</a>
+
+    <!-- Bouton de bascule du thème clair / sombre -->
+    <button id="theme-toggle" aria-label="Activer le mode sombre" type="button">🌙</button>
+
+    <!-- Navigation principale -->
+    <nav aria-label="Navigation principale">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu" type="button">☰</button>
+      <ul id="menu-principal">
+        <li><a href="index.html" aria-current="page">Accueil</a></li>
+        <li><a href="pages/menu.html">Menu</a></li>
+        <li><a href="pages/reservation.html">Réservation</a></li>
+        <li><a href="pages/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contenu principal -->
+  <main id="contenu">
+    <h1>Bienvenue au Bistro Gourmand</h1>
+    <p>Une cuisine bistronomique authentique, préparée avec passion à partir de produits frais et de saison.</p>
+  </main>
+
+  <!-- Pied de page -->
+  <footer>
+    <p>12 Rue des Saveurs, 75001 Paris</p>
+    <p>Ouvert du mardi au dimanche : 12h00 - 14h30 &amp; 19h00 - 22h30</p>
+    <p>&copy; 2026 Le Bistro Gourmand. Tous droits réservés.</p>
+  </footer>
+
+  <!-- Scripts JavaScript différés -->
+  <script src="js/nav.js" defer></script>
+  <script src="js/theme.js" defer></script>
+</body>
+</html>
