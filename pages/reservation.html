@@ -44,10 +44,103 @@
 
   <!-- Contenu principal -->
   <main id="contenu">
-    <div class="container section">
-      <h1>Réserver une Table</h1>
-      <p>Remplissez notre formulaire pour réserver votre moment gourmand chez nous.</p>
-    </div>
+    <section class="section reservation-section" aria-labelledby="reservation-title">
+      <div class="container form-container">
+        <div class="section-header">
+          <h1 id="reservation-title">Réserver une Table</h1>
+          <p class="section-desc">Pour un déjeuner d'affaires ou un dîner chaleureux, réservez votre table en quelques instants.</p>
+        </div>
+
+        <!-- Zone de message de confirmation (masquée par défaut) -->
+        <div id="message-succes" class="message-succes" role="status" hidden>
+          <span class="succes-icone" aria-hidden="true">✓</span>
+          <div class="succes-texte">
+            <h2 class="succes-titre">Réservation confirmée avec succès !</h2>
+            <p id="succes-details"></p>
+          </div>
+        </div>
+
+        <!-- Formulaire de réservation avec désactivation de la validation native du navigateur -->
+        <form id="form-reservation" class="form-reservation" novalidate>
+          <div class="form-grid">
+
+            <!-- 1. Champ Nom complet -->
+            <div class="form-group">
+              <label for="nom">Nom complet <span class="obligatoire" aria-hidden="true">*</span></label>
+              <input type="text" id="nom" name="nom" required aria-required="true" aria-describedby="erreur-nom" placeholder="Ex. Yassine Ben Salem" autocomplete="name">
+              <p class="erreur" id="erreur-nom" aria-live="polite"></p>
+            </div>
+
+            <!-- 2. Champ E-mail -->
+            <div class="form-group">
+              <label for="email">Adresse e-mail <span class="obligatoire" aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email" required aria-required="true" aria-describedby="erreur-email" placeholder="nom@exemple.com" autocomplete="email">
+              <p class="erreur" id="erreur-email" aria-live="polite"></p>
+            </div>
+
+            <!-- 3. Champ Téléphone (8 chiffres) -->
+            <div class="form-group">
+              <label for="telephone">Numéro de téléphone (8 chiffres) <span class="obligatoire" aria-hidden="true">*</span></label>
+              <input type="tel" id="telephone" name="telephone" required aria-required="true" aria-describedby="erreur-telephone" placeholder="Ex. 98123456" autocomplete="tel">
+              <p class="erreur" id="erreur-telephone" aria-live="polite"></p>
+            </div>
+
+            <!-- 4. Champ Nombre de personnes (1 à 12) -->
+            <div class="form-group">
+              <label for="personnes">Nombre de personnes (1 à 12) <span class="obligatoire" aria-hidden="true">*</span></label>
+              <input type="number" id="personnes" name="personnes" min="1" max="12" value="2" required aria-required="true" aria-describedby="erreur-personnes">
+              <p class="erreur" id="erreur-personnes" aria-live="polite"></p>
+            </div>
+
+            <!-- 5. Champ Date -->
+            <div class="form-group">
+              <label for="date">Date de réservation <span class="obligatoire" aria-hidden="true">*</span></label>
+              <input type="date" id="date" name="date" required aria-required="true" aria-describedby="erreur-date">
+              <p class="erreur" id="erreur-date" aria-live="polite"></p>
+            </div>
+
+            <!-- 6. Champ Heure (créneaux 12h-15h et 19h-23h) -->
+            <div class="form-group">
+              <label for="heure">Créneau horaire <span class="obligatoire" aria-hidden="true">*</span></label>
+              <select id="heure" name="heure" required aria-required="true" aria-describedby="erreur-heure">
+                <option value="">-- Choisissez une heure --</option>
+                <optgroup label="Déjeuner (12h - 15h)">
+                  <option value="12:00">12h00</option>
+                  <option value="12:30">12h30</option>
+                  <option value="13:00">13h00</option>
+                  <option value="13:30">13h30</option>
+                  <option value="14:00">14h00</option>
+                  <option value="14:30">14h30</option>
+                </optgroup>
+                <optgroup label="Dîner (19h - 23h)">
+                  <option value="19:00">19h00</option>
+                  <option value="19:30">19h30</option>
+                  <option value="20:00">20h00</option>
+                  <option value="20:30">20h30</option>
+                  <option value="21:00">21h00</option>
+                  <option value="21:30">21h30</option>
+                  <option value="22:00">22h00</option>
+                  <option value="22:30">22h30</option>
+                </optgroup>
+              </select>
+              <p class="erreur" id="erreur-heure" aria-live="polite"></p>
+            </div>
+
+            <!-- 7. Champ Message optionnel -->
+            <div class="form-group form-group-full">
+              <label for="message">Demande particulière ou allergie (optionnel)</label>
+              <textarea id="message" name="message" rows="4" placeholder="Précisez ici vos régimes alimentaires, allergies ou souhaits de table (terrasse, coin calme...)"></textarea>
+            </div>
+
+          </div>
+
+          <!-- Bouton de soumission -->
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-submit">Confirmer la réservation</button>
+          </div>
+        </form>
+      </div>
+    </section>
   </main>
 
   <!-- Pied de page -->

@@ -16,6 +16,12 @@
   --color-border: #E6DCDE;          /* Bordures légères */
   --color-shadow: rgba(43, 34, 32, 0.08); /* Ombre douce */
 
+  /* Couleurs de retours et états (contraste garanti >= 4.5:1) */
+  --color-error: #B71C1C;           /* Rouge d'erreur accessible */
+  --color-error-bg: #FDE8E8;        /* Fond léger pour erreur */
+  --color-success: #1B5E20;         /* Vert de succès accessible */
+  --color-success-bg: #E8F5E9;      /* Fond léger pour succès */
+
   /* Familles de polices (2 familles max avec solutions de repli) */
   --font-title: "Playfair Display", Georgia, "Times New Roman", serif;
   --font-body: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -55,7 +61,7 @@
 [data-theme="dark"] {
   --color-bg: #1A1412;              /* Fond très sombre */
   --color-surface: #26201E;         /* Fond des cartes plus clair que le fond */
-  --color-text: #F5EFEB;            /* Texte clair (contraste ≥ 4.5:1 garanti) */
+  --color-text: #F5EFEB;            /* Texte clair (contraste >= 4.5:1 garanti) */
   --color-text-muted: #B8ADA8;      /* Texte secondaire clair */
   --color-primary: #D45D6B;         /* Bordeaux éclairci pour bonne lisibilité */
   --color-primary-hover: #E67A87;   /* Bordeaux clair pour survol */
@@ -63,4 +69,10 @@
   --color-accent-hover: #E8BF70;    /* Doré clair pour survol */
   --color-border: #3D322F;          /* Bordures adaptées au fond sombre */
   --color-shadow: rgba(0, 0, 0, 0.4); /* Ombre plus marquée */
+
+  /* Couleurs de retours en mode sombre */
+  --color-error: #FF6B6B;           /* Rouge vif contrasté sur fond sombre */
+  --color-error-bg: #3E1B1B;        /* Fond sombre pour erreur */
+  --color-success: #81C784;         /* Vert clair contrasté sur fond sombre */
+  --color-success-bg: #1B3320;      /* Fond sombre pour succès */
 }
