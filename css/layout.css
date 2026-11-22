@@ -40,8 +40,12 @@
 }
 
 /* 3. Navigation mobile-first */
-/* Sur petit écran (< 768px), le menu est masqué et s'ouvre sous le header */
 .site-nav {
+  position: relative;
+}
+
+/* Sur mobile (< 768px), la liste du menu est masquée par défaut */
+#menu-principal {
   display: none;
   width: 100%;
   position: absolute;
@@ -51,11 +55,14 @@
   border-bottom: 2px solid var(--color-border);
   box-shadow: 0 8px 16px var(--color-shadow);
   padding: var(--spacing-md);
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  z-index: 99;
 }
 
-/* Classe activée en JS lorsque le burger est cliqué */
-.site-nav.is-open {
-  display: block;
+/* Affiché quand la classe .ouvert est ajoutée par js/nav.js */
+#menu-principal.ouvert {
+  display: flex;
 }
 
 .nav-list {
@@ -133,22 +140,20 @@
 
 /* Tablette et au-delà (>= 768px) */
 @media (min-width: 768px) {
-  /* Masquer le burger, afficher la navigation en ligne */
+  /* Masquer le bouton burger */
   .nav-toggle {
     display: none;
   }
 
-  .site-nav {
-    display: block;
+  /* Le menu reste TOUJOURS visible sur tablette et écran large */
+  #menu-principal {
+    display: flex !important;
     position: static;
     width: auto;
     background-color: transparent;
     border-bottom: none;
     box-shadow: none;
     padding: 0;
-  }
-
-  .nav-list {
     flex-direction: row;
     gap: var(--spacing-md);
   }
