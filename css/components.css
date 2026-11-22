@@ -45,9 +45,8 @@
   text-decoration: none;
 }
 
-/* Boutons icônes (thème et burger) */
-.btn-icon,
-.nav-toggle {
+/* Bouton de bascule de thème */
+.btn-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -63,16 +62,40 @@
   transition: background-color var(--transition-fast), border-color var(--transition-fast);
 }
 
-.btn-icon:hover,
+.btn-icon:hover {
+  background-color: rgba(43, 34, 32, 0.05);
+  border-color: var(--color-accent);
+}
+
+/* Bouton burger mobile (visible UNIQUEMENT sur mobile < 768px) */
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
 .nav-toggle:hover {
   background-color: rgba(43, 34, 32, 0.05);
   border-color: var(--color-accent);
 }
 
-/* Icône barres burger pour mobile */
-.nav-toggle {
-  flex-direction: column;
-  gap: 4px;
+/* Masquer impérativement le bouton burger sur tablette et ordinateur (>= 768px) */
+@media (min-width: 768px) {
+  .nav-toggle {
+    display: none !important;
+  }
 }
 
 .burger-bar {

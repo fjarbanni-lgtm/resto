@@ -41,7 +41,7 @@
 
 /* 3. Navigation mobile-first */
 .site-nav {
-  position: relative;
+  position: static;
 }
 
 /* Sur mobile (< 768px), la liste du menu est masquée par défaut */
@@ -51,6 +51,7 @@
   position: absolute;
   top: 100%;
   left: 0;
+  right: 0;
   background-color: var(--color-surface);
   border-bottom: 2px solid var(--color-border);
   box-shadow: 0 8px 16px var(--color-shadow);
