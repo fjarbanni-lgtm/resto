@@ -1,0 +1,350 @@
+/* ==========================================================================
+   COMPOSANTS UI (COMPONENTS.CSS)
+   ========================================================================== */
+
+/* 1. Logo du restaurant */
+.logo {
+  font-family: var(--font-title);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.logo:hover {
+  text-decoration: none;
+  color: var(--color-primary-hover);
+}
+
+/* 2. Boutons d'action */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 10px rgba(122, 31, 43, 0.25);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+/* Boutons icônes (thème et burger) */
+.btn-icon,
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.btn-icon:hover,
+.nav-toggle:hover {
+  background-color: rgba(43, 34, 32, 0.05);
+  border-color: var(--color-accent);
+}
+
+/* Icône barres burger pour mobile */
+.nav-toggle {
+  flex-direction: column;
+  gap: 4px;
+}
+
+.burger-bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: var(--color-text);
+  border-radius: 2px;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+/* État burger ouvert */
+.nav-toggle[aria-expanded="true"] .burger-bar:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .burger-bar:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle[aria-expanded="true"] .burger-bar:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* 3. Section Hero */
+.hero {
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-2xl);
+  background: linear-gradient(180deg, rgba(184, 137, 45, 0.08) 0%, transparent 100%);
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+.hero-content {
+  text-align: center;
+}
+
+.hero-subtitle {
+  font-size: var(--font-size-md);
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-lg);
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-media {
+  width: 100%;
+}
+
+.hero-img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px var(--color-shadow);
+}
+
+/* 4. Section Présentation */
+.presentation-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+.presentation-media {
+  width: 100%;
+}
+
+.presentation-img {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 24px var(--color-shadow);
+}
+
+.presentation-content {
+  width: 100%;
+}
+
+/* 5. Cartes de Plats */
+.plat {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 4px 12px var(--color-shadow);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.plat:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px var(--color-shadow);
+}
+
+.plat-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.plat-body {
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.plat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-xs);
+}
+
+.plat-header h3 {
+  font-size: var(--font-size-md);
+  margin-bottom: 0;
+  color: var(--color-text);
+}
+
+.plat-price {
+  font-family: var(--font-title);
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.plat-desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* 6. Barre de filtres de la page Menu */
+.filtres-wrapper {
+  margin-bottom: var(--spacing-xl);
+}
+
+.filtres-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  justify-content: center;
+}
+
+.btn-filtre {
+  padding: var(--spacing-xs) var(--spacing-md);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.btn-filtre:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Bouton filtre actif selon aria-pressed */
+.btn-filtre[aria-pressed="true"] {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  border-color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(122, 31, 43, 0.25);
+}
+
+/* 7. Classe utilitaire pour le filtrage JavaScript */
+.masque {
+  display: none !important;
+}
+
+/* 8. Blocs d'informations pratiques (Accueil) */
+.infos-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+.infos-block {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: 0 4px 12px var(--color-shadow);
+}
+
+.infos-block p {
+  margin-bottom: var(--spacing-xs);
+}
+
+/* ==========================================================================
+   MEDIA QUERIES DES COMPOSANTS (360px, 768px, 1200px)
+   ========================================================================== */
+
+/* 360px : Écrans très étroits */
+@media (min-width: 360px) {
+  .logo {
+    font-size: var(--font-size-md);
+  }
+}
+
+/* 768px : Tablette */
+@media (min-width: 768px) {
+  .logo {
+    font-size: var(--font-size-lg);
+  }
+
+  .hero-container {
+    flex-direction: row;
+    gap: var(--spacing-xl);
+    align-items: center;
+  }
+
+  .hero-content {
+    flex: 1.1;
+    text-align: left;
+  }
+
+  .hero-subtitle {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .hero-media {
+    flex: 0.9;
+  }
+
+  .presentation-container {
+    flex-direction: row;
+    gap: var(--spacing-xl);
+    align-items: center;
+  }
+
+  .presentation-media {
+    flex: 1;
+  }
+
+  .presentation-content {
+    flex: 1.1;
+  }
+
+  .infos-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 1200px : Ordinateur de bureau */
+@media (min-width: 1200px) {
+  .hero-content h1 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .hero-img {
+    max-height: 480px;
+  }
+
+  .presentation-img {
+    max-height: 420px;
+  }
+}

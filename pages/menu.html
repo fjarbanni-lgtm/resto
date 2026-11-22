@@ -11,39 +11,216 @@
   <link rel="stylesheet" href="../css/components.css">
 </head>
 <body>
-  <!-- Lien d'évitement accessible pour les utilisateurs au clavier -->
+  <!-- Lien d'évitement accessible pour la navigation au clavier -->
   <a href="#contenu" class="skip-link">Aller au contenu</a>
 
   <!-- En-tête du site -->
-  <header>
-    <a href="../index.html" class="logo">Le Bistro Gourmand</a>
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="../index.html" class="logo">Le Bistro Gourmand</a>
 
-    <!-- Bouton de bascule du thème clair / sombre -->
-    <button id="theme-toggle" aria-label="Activer le mode sombre" type="button">🌙</button>
+      <div class="header-actions">
+        <!-- Bouton de bascule du mode sombre -->
+        <button id="theme-toggle" class="btn-icon" aria-label="Activer le mode sombre" type="button">🌙</button>
+        <!-- Bouton du menu burger mobile -->
+        <button class="nav-toggle" aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu" type="button">
+          <span class="burger-bar" aria-hidden="true"></span>
+          <span class="burger-bar" aria-hidden="true"></span>
+          <span class="burger-bar" aria-hidden="true"></span>
+        </button>
+      </div>
 
-    <!-- Navigation principale -->
-    <nav aria-label="Navigation principale">
-      <button class="nav-toggle" aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu" type="button">☰</button>
-      <ul id="menu-principal">
-        <li><a href="../index.html">Accueil</a></li>
-        <li><a href="menu.html" aria-current="page">Menu</a></li>
-        <li><a href="reservation.html">Réservation</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
+      <!-- Navigation principale -->
+      <nav aria-label="Navigation principale" class="site-nav">
+        <ul id="menu-principal" class="nav-list">
+          <li><a href="../index.html" class="nav-link">Accueil</a></li>
+          <li><a href="menu.html" class="nav-link" aria-current="page">Menu</a></li>
+          <li><a href="reservation.html" class="nav-link">Réservation</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <!-- Contenu principal -->
   <main id="contenu">
-    <h1>Notre Carte &amp; Menus</h1>
-    <p>Découvrez notre sélection d'entrées, plats et desserts faits maison.</p>
+    <section class="section menu-section" aria-labelledby="menu-title">
+      <div class="container">
+        <div class="section-header">
+          <h1 id="menu-title">Notre Carte &amp; Menus</h1>
+          <p class="section-desc">Cuisine de saison faite maison avec passion, de l'entrée au dessert.</p>
+        </div>
+
+        <!-- Barre de filtres par catégorie -->
+        <div class="filtres-wrapper">
+          <div role="group" aria-label="Filtrer par catégorie" class="filtres-menu">
+            <button type="button" class="btn-filtre" data-filtre="tout" aria-pressed="true">Tout</button>
+            <button type="button" class="btn-filtre" data-filtre="entrees" aria-pressed="false">Entrées</button>
+            <button type="button" class="btn-filtre" data-filtre="plats" aria-pressed="false">Plats</button>
+            <button type="button" class="btn-filtre" data-filtre="desserts" aria-pressed="false">Desserts</button>
+            <button type="button" class="btn-filtre" data-filtre="boissons" aria-pressed="false">Boissons</button>
+          </div>
+        </div>
+
+        <!-- Liste des plats (environ 12 plats répartis sur 4 catégories) -->
+        <div class="grid-plats" id="liste-plats">
+
+          <!-- ENTRÉE 1 -->
+          <article class="plat" data-categorie="entrees">
+            <img src="../images/plat-entree-1.webp" alt="Salade fraîcheur avec burrata crémeuse et tomates confites" loading="lazy" width="600" height="907" class="plat-img">
+            <div class="plat-body">
+              <div class="plat-header">
+                <h3>Salade Fraîcheur &amp; Burrata</h3>
+                <span class="plat-price">18 DT</span>
+              </div>
+              <p class="plat-desc">Burrata crémeuse, mesclun de salade, tomates séchées, pignons toastés et vinaigrette balsamique.</p>
+            </div>
+          </article>
+
+          <!-- ENTRÉE 2 -->
+          <article class="plat" data-categorie="entrees">
+            <img src="../images/plat-entree-2.webp" alt="Velouté réconfortant de potimarron servi bien chaud" loading="lazy" width="600" height="400" class="plat-img">
+            <div class="plat-body">
+              <div class="plat-header">
+                <h3>Velouté Douceur de Potimarron</h3>
+                <span class="plat-price">14 DT</span>
+              </div>
+              <p class="plat-desc">Crème de potimarron onctueuse, graines de courge grillées, pointe de muscade et croûtons dorés à l'ail.</p>
+            </div>
+          </article>
+
+          <!-- ENTRÉE 3 -->
+          <article class="plat" data-categorie="entrees">
+            <img src="../images/plat-entree-1.webp" alt="Carpaccio de légumes croquants et copeaux de parmesan" loading="lazy" width="600" height="907" class="plat-img">
+            <div class="plat-body">
+              <div class="plat-header">
+                <h3>Carpaccio Croquant du Maraîcher</h3>
+                <span class="plat-price">16 DT</span>
+              </div>
+              <p class="plat-desc">Fines lamelles de courgettes et radis croquants, copeaux de parmesan affiné et huile d'olive vierge au citron.</p>
+            </div>
+          </article>
+
+          <!-- PLAT 1 -->
+          <article class="plat" data-categorie="plats">
+            <img src="../images/plat-principal-1.webp" alt="Filet de bœuf rôti au jus corsé avec mousseline de pommes de terre" loading="lazy" width="600" height="400" class="plat-img">
+            <div class="plat-body">
+              <div class="plat-header">
+                <h3>Filet de Bœuf Rôti</h3>
+                <span class="plat-price">38 DT</span>
+              </div>
+              <p class="plat-desc">Cœur de faux-filet grillé minute, mousseline de pommes de terre fumée et réduction au romarin sauvage.</p>
+            </div>
+          </article>
+
+          <!-- PLAT 2 -->
+          <article class="plat" data-categorie="plats">
+            <img src="../images/plat-principal-2.webp" alt="Pavé de saumon grillé et ses petits légumes glacés" loading="lazy" width="600" height="400" class="plat-img">
+            <div class="plat-body">
+              <div class="plat-header">
+                <h3>Pavé de Saumon Braisé</h3>
+                <span class="plat-price">34 DT</span>
+              </div>
+              <p class="plat-desc">Saumon d'élevage durable cuit à l'unilatérale, julienne de légumes de saison glacés et sauce hollandaise légère.</p>
+            </div>
+          </article>
+
+          <!-- PLAT 3 -->
+          <article class="plat" data-categorie="plats">
+            <img src="../images/plat-principal-3.webp" alt="Risotto crémeux aux champignons des bois et parmesan" loading="lazy" width="600" height="400" class="plat-img">
+            <div class="plat-body">
+              <div class="plat-header">
+                <h3>Risotto aux Cèpes Sauvages</h3>
+                <span class="plat-price">28 DT</span>
+              </div>
+              <p class="plat-desc">Riz Carnaroli lié au mascarpone et parmesan 24 mois, poêlée de cèpes persillés et filet d'huile de truffe.</p>
+            </div>
+          </article>
+
+          <!-- PLAT 4 -->
+          <article class="plat" data-categorie="plats">
+            <img src="../images/plat-principal-1.webp" alt="Suprême de volaille fermière dorée au four" loading="lazy" width="600" height="400" class="plat-img">
+            <div class="plat-body">
+              <div class="plat-header">
+                <h3>Suprême de Volaille Jaune</h3>
+                <span class="plat-price">30 DT</span>
+              </div>
+              <p class="plat-desc">Volaille fermière élevée en plein air, jus réduit au thym, carottes fanes rôties et champignons de Paris.</p>
+            </div>
+          </article>
+
+          <!-- DESSERT 1 -->
+          <article class="plat" data-categorie="desserts">
+            <img src="../images/dessert-1.webp" alt="Moelleux fondant au chocolat noir avec cœur coulant" loading="lazy" width="600" height="900" class="plat-img">
+            <div class="plat-body">
+              <div class="plat-header">
+                <h3>Cœur Coulant Chocolat 70%</h3>
+                <span class="plat-price">15 DT</span>
+              </div>
+              <p class="plat-desc">Gâteau tiède pur cacao, cœur chocolat chaud onctueux, brisures de noisettes et crème anglaise vanillée.</p>
+            </div>
+          </article>
+
+          <!-- DESSERT 2 -->
+          <article class="plat" data-categorie="desserts">
+            <img src="../images/dessert-2.webp" alt="Tartelette croustillante garnie de fruits de saison caramélisés" loading="lazy" width="600" height="900" class="plat-img">
+            <div class="plat-body">
+              <div class="plat-header">
+                <h3>Tartelette Feuilletée aux Fruits</h3>
+                <span class="plat-price">14 DT</span>
+              </div>
+              <p class="plat-desc">Pâte feuilletée croustillante dorée au sucre roux, fruits frais rôtis, crème légère au mascarpone.</p>
+            </div>
+          </article>
+
+          <!-- DESSERT 3 -->
+          <article class="plat" data-categorie="desserts">
+            <img src="../images/dessert-1.webp" alt="Entremets gourmand au chocolat et praliné croustillant" loading="lazy" width="600" height="900" class="plat-img">
+            <div class="plat-body">
+              <div class="plat-header">
+                <h3>Délice Praliné Croustillant</h3>
+                <span class="plat-price">15 DT</span>
+              </div>
+              <p class="plat-desc">Feuillantine pralinée, mousse au chocolat noir aérée et zeste d'orange bio confit.</p>
+            </div>
+          </article>
+
+          <!-- BOISSON 1 -->
+          <article class="plat" data-categorie="boissons">
+            <img src="../images/boisson-1.webp" alt="Verre de citronnade fraîche glacée garni de menthe et rondelle de citron" loading="lazy" width="600" height="900" class="plat-img">
+            <div class="plat-body">
+              <div class="plat-header">
+                <h3>Citronnade Fraîche Maison</h3>
+                <span class="plat-price">8 DT</span>
+              </div>
+              <p class="plat-desc">Citrons jaunes pressés minute, sirop de sucre de canne artisanal, eau gazeuse et feuilles de menthe fraîche.</p>
+            </div>
+          </article>
+
+          <!-- BOISSON 2 -->
+          <article class="plat" data-categorie="boissons">
+            <img src="../images/boisson-2.webp" alt="Tasse d'infusion artisanale fumante aux herbes et fruits" loading="lazy" width="600" height="828" class="plat-img">
+            <div class="plat-body">
+              <div class="plat-header">
+                <h3>Thé Artisanal &amp; Infusion Gourmande</h3>
+                <span class="plat-price">9 DT</span>
+              </div>
+              <p class="plat-desc">Sélection de thés verts biologiques d'exception, menthe poivrée ou infusion verveine-agrumes au miel.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Pied de page -->
-  <footer>
-    <p>12 Rue des Saveurs, 75001 Paris</p>
-    <p>Ouvert du mardi au dimanche : 12h00 - 14h30 &amp; 19h00 - 22h30</p>
-    <p>&copy; 2026 Le Bistro Gourmand. Tous droits réservés.</p>
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <p>12 Rue des Saveurs, 75001 Paris &bull; Tél. : 01 23 45 67 89</p>
+      <p>Ouvert du mardi au dimanche : 12h00 - 14h30 &amp; 19h00 - 22h30</p>
+      <p>&copy; 2026 Le Bistro Gourmand. Tous droits réservés.</p>
+    </div>
   </footer>
 
   <!-- Scripts JavaScript différés -->

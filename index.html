@@ -11,39 +11,149 @@
   <link rel="stylesheet" href="css/components.css">
 </head>
 <body>
-  <!-- Lien d'évitement accessible pour les utilisateurs au clavier -->
+  <!-- Lien d'évitement accessible pour la navigation au clavier -->
   <a href="#contenu" class="skip-link">Aller au contenu</a>
 
   <!-- En-tête du site -->
-  <header>
-    <a href="index.html" class="logo">Le Bistro Gourmand</a>
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">Le Bistro Gourmand</a>
 
-    <!-- Bouton de bascule du thème clair / sombre -->
-    <button id="theme-toggle" aria-label="Activer le mode sombre" type="button">🌙</button>
+      <div class="header-actions">
+        <!-- Bouton de bascule du mode sombre -->
+        <button id="theme-toggle" class="btn-icon" aria-label="Activer le mode sombre" type="button">🌙</button>
+        <!-- Bouton du menu burger mobile -->
+        <button class="nav-toggle" aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu" type="button">
+          <span class="burger-bar" aria-hidden="true"></span>
+          <span class="burger-bar" aria-hidden="true"></span>
+          <span class="burger-bar" aria-hidden="true"></span>
+        </button>
+      </div>
 
-    <!-- Navigation principale -->
-    <nav aria-label="Navigation principale">
-      <button class="nav-toggle" aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu" type="button">☰</button>
-      <ul id="menu-principal">
-        <li><a href="index.html" aria-current="page">Accueil</a></li>
-        <li><a href="pages/menu.html">Menu</a></li>
-        <li><a href="pages/reservation.html">Réservation</a></li>
-        <li><a href="pages/contact.html">Contact</a></li>
-      </ul>
-    </nav>
+      <!-- Navigation principale -->
+      <nav aria-label="Navigation principale" class="site-nav">
+        <ul id="menu-principal" class="nav-list">
+          <li><a href="index.html" class="nav-link" aria-current="page">Accueil</a></li>
+          <li><a href="pages/menu.html" class="nav-link">Menu</a></li>
+          <li><a href="pages/reservation.html" class="nav-link">Réservation</a></li>
+          <li><a href="pages/contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <!-- Contenu principal -->
   <main id="contenu">
-    <h1>Bienvenue au Bistro Gourmand</h1>
-    <p>Une cuisine bistronomique authentique, préparée avec passion à partir de produits frais et de saison.</p>
+    <!-- Section Hero (image principale SANS loading="lazy") -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <h1 id="hero-title">L'Art de la Cuisine Gourmande &amp; Conviviale</h1>
+          <p class="hero-subtitle">
+            Savourez des recettes bistronomiques créatives préparées au rythme des saisons avec des produits locaux soigneusement sélectionnés.
+          </p>
+          <a href="pages/reservation.html" class="btn btn-primary">Réserver une table</a>
+        </div>
+        <div class="hero-media">
+          <img src="images/hero.webp" alt="Table accueillante dressée dans notre restaurant Le Bistro Gourmand" width="1200" height="800" class="hero-img">
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Présentation -->
+    <section class="section presentation" aria-labelledby="presentation-title">
+      <div class="container presentation-container">
+        <div class="presentation-media">
+          <img src="images/interieur.webp" alt="Salle de restauration lumineuse et chaleureuse du Bistro Gourmand" loading="lazy" width="1000" height="667" class="presentation-img">
+        </div>
+        <div class="presentation-content">
+          <h2 id="presentation-title">Notre Histoire &amp; Notre Passion</h2>
+          <p>
+            Niché au cœur de la ville, <strong>Le Bistro Gourmand</strong> est né d'un amour sincère pour la cuisine de terroir réinventée. Notre équipe vous accueille dans un cadre feutré et moderne pour un pur moment de gourmandise.
+          </p>
+          <p>
+            Chaque jour, nous sélectionnons les meilleurs ingrédients auprès d'artisans et producteurs régionaux afin de concevoir une carte sincère, généreuse et raffinée.
+          </p>
+          <a href="pages/menu.html" class="btn btn-secondary">Découvrir notre carte</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Plats vedettes (3 articles) -->
+    <section class="section vedettes" aria-labelledby="vedettes-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="vedettes-title">Nos Plats Vedettes</h2>
+          <p class="section-desc">Les créations emblématiques les plus appréciées par nos convives.</p>
+        </div>
+
+        <div class="grid-plats">
+          <!-- Plat vedette 1 : Entrée -->
+          <article class="plat">
+            <img src="images/plat-entree-1.webp" alt="Salade fraîcheur gourmande avec burrata crémeuse et tomates confites" loading="lazy" width="600" height="907" class="plat-img">
+            <div class="plat-body">
+              <div class="plat-header">
+                <h3>Salade Fraîcheur &amp; Burrata</h3>
+                <span class="plat-price">18 DT</span>
+              </div>
+              <p class="plat-desc">Burrata crémeuse, pousses de saison, tomates confites, pignons grillés et pesto au basilic frais.</p>
+            </div>
+          </article>
+
+          <!-- Plat vedette 2 : Plat principal -->
+          <article class="plat">
+            <img src="images/plat-principal-1.webp" alt="Filet de bœuf rôti accompagné de son écrasé de pommes de terre et jus réduit" loading="lazy" width="600" height="400" class="plat-img">
+            <div class="plat-body">
+              <div class="plat-header">
+                <h3>Filet de Bœuf Rôti</h3>
+                <span class="plat-price">38 DT</span>
+              </div>
+              <p class="plat-desc">Pièce de bœuf tendre saisie au beurre mousseux, écrasé de pommes de terre à l'huile d'olive et jus corsé.</p>
+            </div>
+          </article>
+
+          <!-- Plat vedette 3 : Dessert -->
+          <article class="plat">
+            <img src="images/dessert-1.webp" alt="Fondant coulant au chocolat noir 70% et éclat de noisettes" loading="lazy" width="600" height="900" class="plat-img">
+            <div class="plat-body">
+              <div class="plat-header">
+                <h3>Cœur Coulant Chocolat</h3>
+                <span class="plat-price">15 DT</span>
+              </div>
+              <p class="plat-desc">Chocolat noir intense 70%, cœur fondant chaud, noisettes torréfiées et boule de glace vanille artisanale.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Horaires et Adresse -->
+    <section class="section infos" aria-labelledby="infos-title">
+      <div class="container infos-container">
+        <div class="infos-block">
+          <h2 id="infos-title">Adresse &amp; Accès</h2>
+          <p><strong>Le Bistro Gourmand</strong></p>
+          <p>12 Rue des Saveurs, 75001 Paris</p>
+          <p>Téléphone : <a href="tel:+33123456789">01 23 45 67 89</a></p>
+          <p>Courriel : <a href="mailto:contact@lebistrogourmand.fr">contact@lebistrogourmand.fr</a></p>
+        </div>
+        <div class="infos-block">
+          <h2>Horaires d'Ouverture</h2>
+          <p><strong>Mardi à Vendredi :</strong> 12h00 - 14h30 &amp; 19h00 - 22h30</p>
+          <p><strong>Samedi &amp; Dimanche :</strong> 12h00 - 15h00 &amp; 19h00 - 23h00</p>
+          <p><strong>Lundi :</strong> Fermé (jour de repos de l'équipe)</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Pied de page -->
-  <footer>
-    <p>12 Rue des Saveurs, 75001 Paris</p>
-    <p>Ouvert du mardi au dimanche : 12h00 - 14h30 &amp; 19h00 - 22h30</p>
-    <p>&copy; 2026 Le Bistro Gourmand. Tous droits réservés.</p>
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <p>12 Rue des Saveurs, 75001 Paris &bull; Tél. : 01 23 45 67 89</p>
+      <p>Ouvert du mardi au dimanche : 12h00 - 14h30 &amp; 19h00 - 22h30</p>
+      <p>&copy; 2026 Le Bistro Gourmand. Tous droits réservés.</p>
+    </div>
   </footer>
 
   <!-- Scripts JavaScript différés -->
